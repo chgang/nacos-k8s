@@ -11,3 +11,9 @@ gen
 /nacos-k8s.iml
 
 .DS_Store
+/.idea/vcs.xml
+/.idea/nacos-k8s.iml
+/.idea/modules.xml
+/.idea/.gitignore
+/.idea/encodings.xml
+/.idea/misc.xml
