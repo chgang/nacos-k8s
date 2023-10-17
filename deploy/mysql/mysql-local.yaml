@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: nacos/nacos-mysql:5.7
+        image: mysql/mysql:8.0
         ports:
         - containerPort: 3306
         volumeMounts:
