@@ -1,0 +1,60 @@
+# matchExpressions用法
+
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-label06
+spec:
+  selector:
+    matchLabels:
+      app: nginx06
+      env: online
+    matchExpressions:
+     - {key: release, operator: In, values: [stable] }
+     - {key: app,operator: NotIn, values: [nginx02,nginx03] }
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx06
+        env: online
+        release: stable
+    spec:
+      containers:
+      - image: 172.20.58.152/middleware/nginx:1.21.4
+        name: nginx
+
+# headless
+访问service
+[servicename].[namespace].svc.cluster.local
+
+访问单个pod
+[podname].[servicename].[namespace].svc.cluster.local
+
+
+kubectl get svc  查看svc
+
+kubectl delete svc myservice   删除svc服务
+
+kubectl apply -f rs.yaml   运行
+
+kubectl get pod   查看pode节点
+
+kubectl get pod --show-labels   查看标签
+
+kubectl describe svc myservice   查看myservice服务详细信息
+
+kubectl get pod -o wide   查看ip
+
+kubectl label pods deployment-57c78c68df-2t9l7 app=nginx --overwrite   修改其中一个标签
+
+kubectl create ns test-ns  创建命名空间
+
+
+kubectl logs mypod -c mycontainer  查看pod指定容器的日志
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
