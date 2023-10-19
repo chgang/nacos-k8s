@@ -46,7 +46,7 @@ metadata:
   namespace: ingress-nginx
 spec:
   serviceName: nacos-headless
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -54,23 +54,23 @@ spec:
       annotations:
         pod.alpha.kubernetes.io/initialized: "true"
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: "app"
-                    operator: In
-                    values:
-                      - nacos
-              topologyKey: "kubernetes.io/hostname"
+#      affinity:
+#        podAntiAffinity:
+#          requiredDuringSchedulingIgnoredDuringExecution:
+#            - labelSelector:
+#                matchExpressions:
+#                  - key: "app"
+#                    operator: In
+#                    values:
+#                      - nacos
+#              topologyKey: "kubernetes.io/hostname"
       containers:
         - name: nacos
           imagePullPolicy: IfNotPresent
           image: nacos/nacos-server:2.2.3
           resources:
             requests:
-              memory: "2Gi"
+              memory: "1Gi"
               cpu: "500m"
           ports:
             - containerPort: 8848
