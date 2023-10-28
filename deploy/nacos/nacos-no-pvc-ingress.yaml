@@ -161,4 +161,4 @@ spec:
           service: 
             name: nacos-headless
             port:
-              number: 8848
+              number: 8849
