@@ -61,6 +61,11 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
 
 kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
 
+kubectl expose service nacos-headless  --type=LoadBalancer --name=nacos-external-lb -n ingress-nginx
+
+32080
+
+
 rebase1
 
 rebase2
